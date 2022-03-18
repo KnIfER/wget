@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.axet</groupId>
+  <groupId>com.github.KnIfER</groupId>
   <artifactId>wget</artifactId>
   <packaging>jar</packaging>
   <version>1.2.7</version>
   <name>wget</name>
   <description>wget java single / multithread download library</description>
-  <url>https://github.com/axet/wget</url>
+  <url>https://github.com/KnIfER/wget</url>
   <licenses>
     <license>
       <name>GNU LESSER GENERAL PUBLIC LICENSE 3.0</name>
@@ -16,8 +16,8 @@
     </license>
   </licenses>
   <scm>
-    <url>https://github.com/axet/wget</url>
-    <connection>scm:git:https://github.com/axet/wget</connection>
+    <url>https://github.com/KnIfER/wget</url>
+    <connection>scm:git:https://github.com/KnIfER/wget</connection>
   </scm>
 
   <distributionManagement>
