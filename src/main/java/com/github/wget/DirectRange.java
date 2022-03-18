@@ -1,4 +1,8 @@
-package com.github.axet.wget;
+package com.github.wget;
+
+import com.github.wget.info.DownloadInfo;
+import com.github.wget.info.URLInfo;
+import com.github.wget.info.ex.DownloadInterruptedError;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -7,12 +11,6 @@ import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import org.apache.commons.io.FileUtils;
-
-import com.github.axet.wget.info.DownloadInfo;
-import com.github.axet.wget.info.URLInfo;
-import com.github.axet.wget.info.ex.DownloadInterruptedError;
 
 public class DirectRange extends Direct {
 
@@ -39,7 +37,7 @@ public class DirectRange extends Direct {
             File f = target;
             if (!f.exists())
                 f.createNewFile();
-            info.setCount(FileUtils.sizeOf(f));
+            info.setCount(f.length());
 
             if (info.getCount() >= info.getLength()) {
                 notify.run();

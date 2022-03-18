@@ -1,6 +1,6 @@
-package com.github.axet.wget.info.ex;
+package com.github.wget.info.ex;
 
-import com.github.axet.wget.info.DownloadInfo;
+import com.github.wget.info.DownloadInfo;
 
 public class DownloadMultipartError extends DownloadError {
 

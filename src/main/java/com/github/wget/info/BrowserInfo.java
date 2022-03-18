@@ -1,4 +1,4 @@
-package com.github.axet.wget.info;
+package com.github.wget.info;
 
 import java.net.URL;
 

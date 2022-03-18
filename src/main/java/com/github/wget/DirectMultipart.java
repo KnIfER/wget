@@ -1,4 +1,12 @@
-package com.github.axet.wget;
+package com.github.wget;
+
+import com.github.wget.info.DownloadInfo;
+import com.github.wget.info.DownloadInfo.Part;
+import com.github.wget.info.DownloadInfo.Part.States;
+import com.github.wget.info.URLInfo;
+import com.github.wget.info.ex.DownloadInterruptedError;
+import com.github.wget.info.ex.DownloadMultipartError;
+import com.github.wget.info.ex.DownloadRetry;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -7,14 +15,6 @@ import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import com.github.axet.wget.info.DownloadInfo;
-import com.github.axet.wget.info.DownloadInfo.Part;
-import com.github.axet.wget.info.DownloadInfo.Part.States;
-import com.github.axet.wget.info.URLInfo;
-import com.github.axet.wget.info.ex.DownloadInterruptedError;
-import com.github.axet.wget.info.ex.DownloadMultipartError;
-import com.github.axet.wget.info.ex.DownloadRetry;
 
 public class DirectMultipart extends Direct {
 

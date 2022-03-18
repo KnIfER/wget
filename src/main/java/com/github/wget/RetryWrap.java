@@ -1,4 +1,11 @@
-package com.github.axet.wget;
+package com.github.wget;
+
+import com.github.wget.info.ex.DownloadError;
+import com.github.wget.info.ex.DownloadIOCodeError;
+import com.github.wget.info.ex.DownloadIOError;
+import com.github.wget.info.ex.DownloadInterruptedError;
+import com.github.wget.info.ex.DownloadMoved;
+import com.github.wget.info.ex.DownloadRetry;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,13 +17,6 @@ import java.net.SocketException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import com.github.axet.wget.info.ex.DownloadError;
-import com.github.axet.wget.info.ex.DownloadIOCodeError;
-import com.github.axet.wget.info.ex.DownloadIOError;
-import com.github.axet.wget.info.ex.DownloadInterruptedError;
-import com.github.axet.wget.info.ex.DownloadMoved;
-import com.github.axet.wget.info.ex.DownloadRetry;
 
 public class RetryWrap {
 
@@ -44,8 +44,10 @@ public class RetryWrap {
 
         if (Thread.currentThread().isInterrupted())
             throw new DownloadInterruptedError("interrrupted");
-
-        r.moved(e.getMoved());
+	
+		throw e;
+		//here throws download moved
+        //r.moved(e.getMoved());
     }
 
     static <T> void retry(AtomicBoolean stop, WrapReturn<T> r, RuntimeException e) {
@@ -76,33 +78,26 @@ public class RetryWrap {
             try {
                 try {
                     T t = r.download();
-
                     return t;
-                } catch (SocketException e) {
+                } catch (SocketException | ProtocolException | HttpRetryException | InterruptedIOException | UnknownHostException e) {
                     // enumerate all retry exceptions
-                    throw new DownloadRetry(e);
-                } catch (ProtocolException e) {
-                    // enumerate all retry exceptions
-                    throw new DownloadRetry(e);
-                } catch (HttpRetryException e) {
-                    // enumerate all retry exceptions
-                    throw new DownloadRetry(e);
-                } catch (InterruptedIOException e) {
-                    // enumerate all retry exceptions
-                    throw new DownloadRetry(e);
-                } catch (UnknownHostException e) {
-                    // enumerate all retry exceptions
+					CMN.debug(e);
                     throw new DownloadRetry(e);
                 } catch (FileNotFoundException e) {
+					CMN.debug(e);
                     throw new DownloadError(e);
                 } catch (RuntimeException e) {
+					CMN.debug(e);
                     throw e;
                 } catch (IOException e) {
+					CMN.debug(e);
                     throw new DownloadIOError(e);
                 }
             } catch (DownloadMoved e) {
+				//CMN.Log("DownloadMoved", e);
                 moved(stop, r, e);
             } catch (DownloadRetry e) {
+				CMN.debug(e);
                 retry(stop, r, e);
             }
         }

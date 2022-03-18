@@ -1,12 +1,13 @@
-package com.github.axet.wget;
+package com.github.wget;
+
+import com.github.wget.info.DownloadInfo;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import com.github.axet.wget.info.DownloadInfo;
-
 public abstract class Direct {
-
+	public static boolean shouldDownload=true;
+	
     File target = null;
 
     DownloadInfo info;

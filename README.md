@@ -33,7 +33,7 @@ Here is a three kind of exceptions.
     import java.net.MalformedURLException;
     import java.net.URL;
     
-    import com.github.axet.wget.WGet;
+    import WGet;
     
     public class Example {
     
@@ -64,10 +64,10 @@ Here is a three kind of exceptions.
     import java.net.URL;
     import java.util.concurrent.atomic.AtomicBoolean;
     
-    import com.github.axet.wget.info.DownloadInfo;
-    import com.github.axet.wget.info.DownloadInfo.Part;
-    import com.github.axet.wget.info.DownloadInfo.Part.States;
-    import com.github.axet.wget.info.ex.DownloadMultipartError;
+    import DownloadInfo;
+    import DownloadInfo.Part;
+    import DownloadInfo.Part.States;
+    import DownloadMultipartError;
     
     public class Example {
     

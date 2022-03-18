@@ -1,11 +1,10 @@
-package com.github.axet.wget.info;
+package com.github.wget.info;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  * DownloadInfo class. Keep part information. We need to serialize this class
@@ -14,12 +13,10 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * @author axet
  * 
  */
-@XStreamAlias("DownloadInfo")
 public class DownloadInfo extends URLInfo {
 
     public final static long PART_LENGTH = 10 * 1024 * 1024;
 
-    @XStreamAlias("DownloadInfoPart")
     public static class Part {
         /**
          * Notify States
@@ -160,7 +157,7 @@ public class DownloadInfo extends URLInfo {
         if (parts != null) {
             for (Part p : parts) {
                 p.setCount(0);
-                p.setState(DownloadInfo.Part.States.QUEUED);
+                p.setState(Part.States.QUEUED);
             }
         }
     }
@@ -200,7 +197,7 @@ public class DownloadInfo extends URLInfo {
                 part.setEnd(part.getStart() + PART_LENGTH - 1);
                 if (part.getEnd() > getLength() - 1)
                     part.setEnd(getLength() - 1);
-                part.setState(DownloadInfo.Part.States.QUEUED);
+                part.setState(Part.States.QUEUED);
                 parts.add(part);
 
                 start += PART_LENGTH;

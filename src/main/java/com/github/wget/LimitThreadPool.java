@@ -1,4 +1,4 @@
-package com.github.axet.wget;
+package com.github.wget;
 
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.SynchronousQueue;

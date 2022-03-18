@@ -1,4 +1,4 @@
-package com.github.axet.wget.info.ex;
+package com.github.wget.info.ex;
 
 public class DownloadRetry extends RuntimeException {
     private static final long serialVersionUID = 1L;

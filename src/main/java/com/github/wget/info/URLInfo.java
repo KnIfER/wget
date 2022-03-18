@@ -1,4 +1,9 @@
-package com.github.axet.wget.info;
+package com.github.wget.info;
+
+import com.github.wget.CMN;
+import com.github.wget.Direct;
+import com.github.wget.RetryWrap;
+import com.github.wget.info.ex.DownloadRetry;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -6,10 +11,6 @@ import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.github.axet.wget.Direct;
-import com.github.axet.wget.RetryWrap;
-import com.github.axet.wget.info.ex.DownloadRetry;
 
 /**
  * URLInfo - keep all information about source in one place. Thread safe.
@@ -110,6 +111,7 @@ public class URLInfo extends BrowserInfo {
 
                 @Override
                 public void moved(URL u) {
+					CMN.debug("moved??", u, url);
                     setReferer(url);
 
                     url = u;
@@ -270,7 +272,7 @@ public class URLInfo extends BrowserInfo {
     synchronized public void setDelay(int delay, Throwable e) {
         this.delay = delay;
         this.exception = e;
-        this.state = URLInfo.States.RETRYING;
+        this.state = States.RETRYING;
     }
 
     synchronized public boolean getRange() {

@@ -1,4 +1,4 @@
-package com.github.axet.wget.info.ex;
+package com.github.wget.info.ex;
 
 
 public class DownloadInterruptedError extends DownloadError {

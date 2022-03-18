@@ -1,4 +1,4 @@
-package com.github.axet.wget;
+package com.github.wget;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ public class SpeedInfo {
         }
     }
 
-    protected ArrayList<Sample> samples = new ArrayList<SpeedInfo.Sample>();
+    protected ArrayList<Sample> samples = new ArrayList<Sample>();
     protected long peak;
 
     // start sample use to calculate average speed
